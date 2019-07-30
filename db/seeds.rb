@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+puts 'Cadastrando contatos...'
 
 100.times do
   kind = Kind.create!(
@@ -19,9 +20,21 @@
   )
 end
 
+puts 'Cadastrando phones...'
+
 Contact.all.each  do |contact|
   Random.rand(5).times do |i|
     Phone.create!(number: Faker::PhoneNumber.cell_phone,
-                  contact: contact)    
+                  contact: contact)
   end
+end
+
+puts 'Cadastrando addresses...'
+
+Contact.all.each  do |contact|
+  address = Address.create(
+    street: Faker::Address.street_address,
+    city: Faker::Address.city,
+    contact: contact
+  )
 end
