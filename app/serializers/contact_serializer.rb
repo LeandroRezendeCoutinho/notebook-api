@@ -1,4 +1,8 @@
 class ContactSerializer < ActiveModel::Serializer
+  belongs_to :kind
+  has_many :phones
+  has_one :address
+
   attributes :id, :name, :email, :birthdate
 
   def attributes(*args)
