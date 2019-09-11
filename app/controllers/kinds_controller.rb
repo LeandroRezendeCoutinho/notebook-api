@@ -1,5 +1,10 @@
 class KindsController < ApplicationController
+  include ActionController::HttpAuthentication::Token::ControllerMethods
+
   before_action :set_kind, only: [:show, :update, :destroy]
+  before_action :authenticate
+
+  TOKEN = 'secret123'
 
   # GET /kinds
   def index
@@ -52,5 +57,14 @@ class KindsController < ApplicationController
   # Only allow a trusted parameter "white list" through.
   def kind_params
     params.require(:kind).permit(:name)
+  end
+
+  def authenticate
+    authenticate_or_request_with_http_token do |token, options|
+      ActiveSupport::SecurityUtils.secure_compare(
+        ::Digest::SHA256.hexdigest(token),
+        ::Digest::SHA256.hexdigest(TOKEN)
+      )
+    end
   end
 end
