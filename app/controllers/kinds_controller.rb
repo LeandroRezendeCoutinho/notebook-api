@@ -62,7 +62,7 @@ class KindsController < ApplicationController
   def authenticate
     authenticate_or_request_with_http_token do |token, options|
       hmac_secret = 'my$ecretk3y'
-      JWT.decode token, hmac_secret, true, { :algorithm => 'HS256' }
+      JWT.decode token, hmac_secret, true, algorithm: 'HS256'
     end
   end
 end
