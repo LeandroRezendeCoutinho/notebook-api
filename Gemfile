@@ -34,6 +34,10 @@ gem 'versionist'
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
 
+# gem pagy has much better performance. Using kaminari because of the course
+gem 'kaminari'
+
+
 group :development, :test do
   gem 'awesome-pry'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
