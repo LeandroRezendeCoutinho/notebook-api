@@ -37,6 +37,8 @@ gem 'versionist'
 # gem pagy has much better performance. Using kaminari because of the course
 gem 'kaminari'
 
+# Link header pagination for Rails and Grape APIs
+gem 'api-pagination'
 
 group :development, :test do
   gem 'awesome-pry'
