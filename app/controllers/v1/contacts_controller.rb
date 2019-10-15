@@ -6,9 +6,13 @@ module V1
 
     # GET /contacts
     def index
-      @contacts = Contact.all.page(params[:page])
+      # json api especification > localhost:3000/v1/contacts?page%5Bnumber%5D=3&page%5Bsize%5D=5
+      page_number = params[:page].try(:[], :number)
+      per_page = params[:page].try(:[], :size)
 
-      paginate json: @contacts, include: %i[kind phones address]
+      @contacts = Contact.all.page(page_number).per(per_page)
+
+      render json: @contacts, include: %i[kind phones address]
     end
 
     # GET /contacts/1

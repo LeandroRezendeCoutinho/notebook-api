@@ -38,7 +38,7 @@ gem 'versionist'
 gem 'kaminari'
 
 # Link header pagination for Rails and Grape APIs
-gem 'api-pagination'
+# gem 'api-pagination'
 
 group :development, :test do
   gem 'awesome-pry'
