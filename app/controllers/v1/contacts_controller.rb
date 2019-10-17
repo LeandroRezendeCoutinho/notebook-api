@@ -12,7 +12,11 @@ module V1
 
       @contacts = Contact.all.page(page_number).per(per_page)
 
-      render json: @contacts, include: %i[kind phones address]
+      # expires_in 5.seconds, public: true
+      # actionpack/lib/action_controller/metal/conditional_get.rb
+      if stale?(etag: @contacts)
+        render json: @contacts, include: %i[kind phones address]
+      end
     end
 
     # GET /contacts/1
