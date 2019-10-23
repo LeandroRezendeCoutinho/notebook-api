@@ -32,7 +32,7 @@ gem 'rails-i18n', '~> 5.1'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'versionist'
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
-# gem 'rack-cors'
+gem 'rack-cors'
 
 # gem pagy has much better performance. Using kaminari because of the course
 gem 'kaminari'
